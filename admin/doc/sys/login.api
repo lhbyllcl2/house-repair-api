@@ -1,0 +1,28 @@
+    //登陆请求
+    type LoginReq {
+        Username string `json:"username"`
+        Password string `json:"password"`
+    }
+    //登录返回用户信息
+    type UserReply {
+        Uid int64 `json:"uid"`
+        Username string `json:"username"`
+        Email string `json:"email"`
+        Mobile string `json:"mobile"`
+        Nickname string `json:"nickname"`
+        Avator string `json:"avator"`
+        JwtToken
+    }
+    type JwtToken {
+        AccessToken string `json:"access_token,omitempty"`
+        AccessExpire int64 `json:"access_expire,omitempty"`
+        RefreshAfter int64 `json:"refresh_after,omitempty"`
+    }
+    @server(
+        group: sys/user
+    )
+    service admin-api {
+        @doc "admin"
+        @handler login
+        post /admin/login (LoginReq) returns (UserReply)
+    }

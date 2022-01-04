@@ -1,0 +1,48 @@
+    //添加角色
+    type RoleAddReq {
+        Name string `json:"name"`              // 角色名称
+        Remark string `json:"remark"`          // 备注
+        Status int64 `json:"status,optional"`  // 状
+    }
+    //更新角色
+    type RoleUpdateReq {
+        Id int64 `json:"id"`
+        RoleAddReq       // 状
+    }
+    type RoleDeleteReq {
+        Id int64 `json:"id"`
+    }
+    //角色列表
+    type RoleListReq {
+        Page string `json:"page"`
+        Size string `json:"size"`
+    }
+    type RoleListResp {
+        Total int64 `json:"total"`
+        Data []RoleLisItem `json:"data"`
+    }
+    type RoleLisItem {
+        Id int64 `json:"id"`              // 编号
+        Name string `json:"name"`         // 角色名称
+        Remark string `json:"remark"`     // 备注
+        Status int64 `json:"status"`      // 状态  1：启用  0：禁用
+        CreateAt int64 `json:"create_at"` // 状态  1：启用  0：禁用
+    }
+    @server(
+        jwt: Auth
+        group: sys/role
+        middleware: AuthMiddleware
+    )
+    service admin-api {
+        @doc(
+            summary: "系统设置"
+        )
+        @handler roleList
+        get /admin/sys/role/list (RoleListReq) returns (RoleListResp)
+        @handler roleAdd
+        post /admin/sys/role/add (RoleAddReq) returns ()
+        @handler roleUpdate
+        post /admin/sys/role/update (RoleUpdateReq) returns ()
+        @handler roleDelete
+        post /admin/sys/role/delete returns ()
+    }

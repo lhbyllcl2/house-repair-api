@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+package sys;
+//user start---------------------
+message LoginReq {
+  string UserName = 1;
+  string password = 2;
+}
+
+message loginResp {
+  string status = 1;
+  string currentAuthority = 2;
+  int64 id = 3;
+  string userName = 4;
+  string AccessToken = 5;
+  int64 AccessExpire = 6;
+  int64 RefreshAfter = 7;
+}
+
+message InfoReq {
+  int64 UserId = 1;
+}
+
+message UserAddReq {
+  string email = 1;
+  string mobile = 2;
+  string name = 3;
+  string nick_name = 4;
+  string avatar = 5;
+  string create_by = 6;
+  int64 role_id = 7;
+  int64 job_id = 8;
+}
+
+message UserListReq {
+  int64 current = 1;
+  int64 pageSize = 2;
+  string name = 3;
+  string nick_name = 4;
+  string mobile = 5;
+  string email = 6;
+  int64 status = 7;
+}
+
+message UserListData{
+  int64 id = 1;
+  string name = 2;
+  string nick_name = 3;
+  string avatar = 4;
+  string password = 5;
+  string salt = 6;
+  string email = 7;
+  string mobile = 8;
+  int64 status = 9;
+  string create_by = 10;
+  string create_time = 11;
+  string last_update_by = 12;
+  string last_update_time = 13;
+  int64 del_flag = 14;
+  int64 job_id = 15;
+  int64 role_id = 16;
+  string role_name = 17;
+  string job_name = 18;
+}
+
+message UserListResp {
+  int64 total = 1;
+  repeated  UserListData list = 2;
+}
+
+message UserUpdateReq {
+  int64 id = 1;
+  string email = 2;
+  string mobile = 3;
+  string name = 4;
+  string nick_name = 5;
+  string avatar = 6;
+  int64 dept_id = 7;
+  string last_update_by = 8;
+  int64 role_id = 9;
+  int64 status = 10;
+  int64 job_id = 11;
+}
+
+message UserDeleteReq {
+  int64 id = 1;
+}
+
+message ReSetPasswordReq {
+  int64 id = 1;
+  string last_update_by = 2;
+}
+
+message ReSetPasswordResp {
+  string pong = 1;
+}
+
+message UserStatusReq {
+  int64 id = 1;
+  int64 status = 2;
+  string last_update_by = 3;
+}
+
+message UserStatusResp {
+  string pong = 1;
+}
+//role start---------------------
+message RoleAddReq {
+  string name = 1;
+  string remark = 2;
+  int64 status = 3;
+}
+message RoleUpdateReq {
+  int64 id = 1;
+  string name = 2;
+  string remark = 3;
+  int64 status = 4;
+}
+message RoleDeleteReq {
+  int64 id = 1;
+}
+message RoleListReq{
+  string name = 1;
+  int64 page = 2;
+  int64 size = 3;
+}
+message RoleLisItem{
+  int64 id = 1;
+  string name = 2;
+  string remark = 3;
+  int64 status = 4;
+  string create_at = 5;
+}
+
+message RoleListResp{
+  int64 total = 1;
+  repeated RoleLisItem list = 2;
+}
+//role end---------------------
+
+message Response{
+}
+service Sys {
+  //用户相关
+  rpc Login(LoginReq) returns(loginResp);
+  //角色管理
+  rpc RoleList(RoleListReq) returns(RoleListResp);
+  rpc RoleAdd(RoleAddReq) returns(Response);
+  rpc RoleUpdate(RoleUpdateReq) returns(Response);
+  rpc RoleDelete(RoleDeleteReq) returns(Response);
+  //用户管理
+  rpc UserList(UserListReq) returns(UserListResp);
+  rpc UserAdd(UserAddReq) returns(Response);
+  rpc UserUpdate(UserUpdateReq) returns(Response);
+  rpc UserDelete(UserDeleteReq) returns(Response);
+}
+
+
+

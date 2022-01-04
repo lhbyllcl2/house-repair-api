@@ -1,0 +1,58 @@
+    //添加角色
+    type addUserReq {
+        Name string `json:"name"`
+        NickName string `json:"nick_name"`
+        Avatar string `json:"avatar"`
+        Email string `json:"email"`
+        Mobile string `json:"mobile"`
+        Status int64 `json:"status"`
+        JobId int64 `json:"job_id"`
+    }
+    //更新角色
+    type updateUserReq {
+        Id int64 `json:"id"`
+        addUserReq       // 状
+    }
+    type deleteUserReq {
+        Id int64 `json:"id"`
+    }
+    //用户列表
+    type userListReq {
+        Page string `json:"page"`
+        Size string `json:"size"`
+    }
+    type userListResp {
+        Total int64 `json:"total"`
+        Data []userLisItem `json:"data"`
+    }
+    type userLisItem {
+        Id int64 `json:"id"`               // 编号
+        Name string `json:"name"`
+        NickName string `json:"nick_name"`
+        Avatar string `json:"avatar"`
+        Email string `json:"email"`
+        Mobile string `json:"mobile"`
+        Status int64 `json:"status"`
+        JobId int64 `json:"job_id"`
+        RoleIds []int64 `json:"role_ids"`
+        CreateBy string `json:"create_by"`
+        CreateAt string `json:"create_at"` // 状态  1：启用  0：禁用
+    }
+    @server(
+        jwt: Auth
+        group: sys/user
+        middleware: AuthMiddleware
+    )
+    service admin-api {
+        @doc(
+            summary: "系统设置"
+        )
+        @handler userList
+        get /admin/sys/user/list (userListReq) returns (userListResp)
+        @handler userAdd
+        post /admin/sys/user/add (addUserReq) returns ()
+        @handler userUpdate
+        post /admin/sys/user/update (updateUserReq) returns ()
+        @handler userDelete
+        post /admin/sys/user/delete returns ()
+    }
