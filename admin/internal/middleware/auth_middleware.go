@@ -2,10 +2,12 @@ package middleware
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"github.com/tal-tech/go-zero/core/logx"
 	"github.com/tal-tech/go-zero/core/stores/redis"
+
 	"house-repair-api/pkg/response"
-	"net/http"
 )
 
 type AuthMiddleware struct {

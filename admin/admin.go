@@ -3,9 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/lhbyllcl2/house-repair-api/admin/internal/config"
-	"github.com/lhbyllcl2/house-repair-api/admin/internal/handler"
-	"github.com/lhbyllcl2/house-repair-api/admin/internal/svc"
+
+	"house-repair-api/admin/internal/config"
+	"house-repair-api/admin/internal/handler"
+	"house-repair-api/admin/internal/svc"
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/rest"

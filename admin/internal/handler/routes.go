@@ -4,9 +4,9 @@ package handler
 import (
 	"net/http"
 
-	sysrole "github.com/lhbyllcl2/house-repair-api/admin/internal/handler/sys/role"
-	sysuser "github.com/lhbyllcl2/house-repair-api/admin/internal/handler/sys/user"
-	"github.com/lhbyllcl2/house-repair-api/admin/internal/svc"
+	sysrole "house-repair-api/admin/internal/handler/sys/role"
+	sysuser "house-repair-api/admin/internal/handler/sys/user"
+	"house-repair-api/admin/internal/svc"
 
 	"github.com/tal-tech/go-zero/rest"
 )

@@ -1,13 +1,12 @@
 package handler
 
 import (
-	"house-repair-api/pkg/response"
 	"net/http"
+
+	"house-repair-api/pkg/response"
 
 	"house-repair-api/admin/internal/logic/sys/role"
 	"house-repair-api/admin/internal/svc"
-
-	logic "house-repair-api/admin/admin/internal/logic/sys/role"
 )
 
 func RoleDeleteHandler(ctx *svc.ServiceContext) http.HandlerFunc {
