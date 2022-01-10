@@ -30,3 +30,4 @@ output/
 install.*
 /storage/backup
 local.json
+/rpc/sys/etc/sys.yaml
