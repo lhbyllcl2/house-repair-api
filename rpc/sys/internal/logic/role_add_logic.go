@@ -3,7 +3,8 @@ package logic
 import (
 	"context"
 	"errors"
-	"house-repair-api/rpc/model/sysmodel"
+
+	"house-repair-api/model/sysmodel"
 
 	"house-repair-api/rpc/sys/internal/svc"
 	"house-repair-api/rpc/sys/sys"

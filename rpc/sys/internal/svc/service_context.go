@@ -2,7 +2,8 @@ package svc
 
 import (
 	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"house-repair-api/rpc/model/sysmodel"
+
+	"house-repair-api/model/sysmodel"
 	"house-repair-api/rpc/sys/internal/config"
 )
 

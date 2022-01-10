@@ -31,3 +31,4 @@ install.*
 /storage/backup
 local.json
 /rpc/sys/etc/sys.yaml
+/rpc/repair/etc/repair.yaml

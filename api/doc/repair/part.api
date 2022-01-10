@@ -1,0 +1,48 @@
+    //添加part
+    type PartAddReq {
+        Name string `json:"name"`              // part名称
+        ParentId int64 `json:"parent_id"`      // 父级id
+        Sort int `json:"sort"`      // 排序
+    }
+    //更新part
+    type PartUpdateReq {
+        Id int64 `json:"id"`
+        PartAddReq
+    }
+    type PartDeleteReq {
+        Id int64 `json:"id"`
+    }
+    //Part列表
+    type PartListReq {
+        Current int `json:"current"`
+        PageSize int `json:"pageSize"`
+    }
+    type PartListResp {
+        Total int64 `json:"total"`
+        Item []PartLisItem `json:"item"`
+    }
+    type PartLisItem {
+        Id int64 `json:"id"`              // 编号
+        Name string `json:"name"`         // part名称
+        ParentId int64 `json:"parent_id"` // 父级id
+        ParentName string `json:"parent_name"` // 父级名称
+        Sort int `json:"sort"`      // 排序
+    }
+    @server(
+        jwt: Auth
+        group: repair/part
+        middleware: AuthMiddleware
+    )
+    service api-api {
+        @doc(
+            summary: "维修部品管理"
+        )
+        @handler partList
+        get /api/repair/part/list (PartListReq) returns (PartListResp)
+        @handler partAdd
+        post /api/repair/part/add (PartAddReq) returns ()
+        @handler partUpdate
+        post /api/repair/part/update (PartUpdateReq) returns ()
+        @handler partDelete
+        post /api/repair/part/delete (PartDeleteReq) returns ()
+    }

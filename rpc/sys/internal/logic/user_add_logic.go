@@ -3,10 +3,12 @@ package logic
 import (
 	"context"
 	"errors"
+
 	"github.com/tal-tech/go-zero/core/logx"
 	"github.com/tal-tech/go-zero/core/stringx"
-	"house-repair-api/rpc/model/sysmodel"
-	"house-repair-api/rpc/pkg/password"
+
+	"house-repair-api/model/sysmodel"
+	"house-repair-api/pkg/password"
 	"house-repair-api/rpc/sys/internal/svc"
 	"house-repair-api/rpc/sys/sys"
 )

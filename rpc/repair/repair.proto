@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package repair;
+
+message PartAddReq {
+  string name = 1;
+  int64 parent_id = 2;
+  int64 sort = 3;
+}
+message PartListReq {
+  int64 current = 1;
+  int64 pageSize = 2;
+  string name = 3;
+}
+message PartLisItem {
+  int64 current = 1;
+  int64 pageSize = 2;
+  string name = 3;
+  string nick_name = 4;
+  string mobile = 5;
+  string email = 6;
+  int64 status = 7;
+}
+message PartListResp {
+  int64 total = 1;
+  repeated  PartLisItem list = 2;
+}
+
+message PartUpdateReq {
+  int64 id = 1;
+  string name = 2;
+  int64 parent_id = 9;
+  int64 sort = 10;
+}
+
+message PartDeleteReq {
+  int64 id = 1;
+}
+message Response{
+}
+service Repair {
+  //part管理
+  rpc PartList(PartListReq) returns(PartListResp);
+  rpc PartAdd(PartAddReq) returns(Response);
+  rpc PartUpdate(PartUpdateReq) returns(Response);
+  rpc PartDelete(PartDeleteReq) returns(Response);
+}
+
+
+
