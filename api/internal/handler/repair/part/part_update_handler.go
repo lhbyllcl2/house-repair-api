@@ -2,11 +2,11 @@ package handler
 
 import (
 	"net/http"
-	"real-estate/pkg/response"
 
 	"house-repair-api/api/internal/logic/repair/part"
 	"house-repair-api/api/internal/svc"
 	"house-repair-api/api/internal/types"
+	"house-repair-api/pkg/response"
 
 	"github.com/tal-tech/go-zero/rest/httpx"
 )
